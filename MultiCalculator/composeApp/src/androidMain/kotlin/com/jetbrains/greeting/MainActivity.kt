@@ -41,7 +41,7 @@ fun CalcRow() {
 }
 
 @Composable
-fun CalcDisplay() {
+fun CalcDisplay(display: MutableState<String>) {
 
 }
 
