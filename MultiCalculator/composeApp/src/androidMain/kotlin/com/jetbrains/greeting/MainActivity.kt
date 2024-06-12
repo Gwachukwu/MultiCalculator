@@ -40,6 +40,7 @@ fun AppAndroidPreview() {
 @Composable
 fun CalcView() {
     val displayText = mutableStateOf("0")
+
     Column(
         Modifier.background(Color.LightGray)
     ) {
