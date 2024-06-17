@@ -14,7 +14,9 @@ import androidx.compose.material.Button
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.MutableState
+import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
@@ -25,7 +27,8 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
 
         setContent {
-            App()
+//            App()
+            CalcView()
         }
     }
 }
@@ -39,7 +42,25 @@ fun AppAndroidPreview() {
 @Preview
 @Composable
 fun CalcView() {
-    val displayText = mutableStateOf("0")
+    val displayText = rememberSaveable {
+        mutableStateOf("0")
+    }
+
+    val leftNumber = rememberSaveable {
+        mutableIntStateOf(0)
+    }
+
+    val rightNumber = rememberSaveable {
+        mutableIntStateOf(0)
+    }
+
+    val operation = rememberSaveable {
+        mutableStateOf("")
+    }
+
+    val complete = rememberSaveable {
+     mutableStateOf(false)
+    }
 
     Column(
         Modifier.background(Color.LightGray)
