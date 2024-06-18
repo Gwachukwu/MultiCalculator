@@ -2,6 +2,7 @@ package com.jetbrains.greeting
 
 import App
 import android.os.Bundle
+import android.widget.Toast
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.background
@@ -19,6 +20,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 
@@ -73,12 +75,15 @@ fun CalcView() {
             "/" -> {
                 if (rightNumber.intValue != 0) {
                     answer.intValue = leftNumber.intValue / rightNumber.intValue
-                } else {
-                    displayText.value = "Error, cannot divide by zero"
-                    return
+                } else{
+                    val context = LocalContext.current
+                    Toast.makeText(context, "Cannot divide by zero", Toast.LENGTH_SHORT).show()
                 }
             }
-            else -> displayText.value = "Error no operation detected"
+            else -> {
+                val context = LocalContext.current
+                Toast.makeText(context, "No operation detected", Toast.LENGTH_SHORT).show()
+            }
         }
         displayText.value = answer.intValue.toString()
     }else if(!complete.value &&operation.value.isNotEmpty()){
