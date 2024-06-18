@@ -4,4 +4,4 @@
 
 ## Issues in Kotlin Calculator - Assignment 3
   
-1. **App crashing when dividing by zero** My app kept crashing when dividing by zero. To fix that I researched on toasts in kotlin and added conditions that show a toast notification when a user attemps to divide by zero.
+1. **App crashing when dividing by zero:** My app kept crashing when dividing by zero. To fix that I researched on toasts in kotlin and added conditions that show a toast notification when a user attemps to divide by zero.
