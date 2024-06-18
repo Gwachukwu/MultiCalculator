@@ -62,6 +62,43 @@ fun CalcView() {
      mutableStateOf(false)
     }
 
+    if(complete.value && operation.value.isNotEmpty()){
+        val answer = rememberSaveable {
+            mutableIntStateOf(0)
+        }
+        when (operation.value) {
+            "+" -> answer.intValue = leftNumber.intValue + rightNumber.intValue
+            "-" -> answer.intValue = leftNumber.intValue - rightNumber.intValue
+            "*" -> answer.intValue = leftNumber.intValue * rightNumber.intValue
+            "/" -> {
+                if (rightNumber.intValue != 0) {
+                    answer.intValue = leftNumber.intValue / rightNumber.intValue
+                } else {
+                    displayText.value = "Error, cannot divide by zero"
+                    return
+                }
+            }
+            else -> displayText.value = "Error no operation detected"
+        }
+        displayText.value = answer.intValue.toString()
+    }else if(!complete.value &&operation.value.isNotEmpty()){
+         displayText.value = rightNumber.intValue.toString()
+    }else{
+        displayText.value = leftNumber.intValue.toString()
+    }
+
+    fun numberPress(){
+
+A    }
+
+    fun operationPress(){
+
+    }
+
+    fun equalsPress(){
+
+    }
+
     Column(
         Modifier.background(Color.LightGray)
     ) {
