@@ -1,6 +1,7 @@
 package com.jetbrains.greeting
 
 import App
+import Calculator
 import android.os.Bundle
 import android.widget.Toast
 import androidx.activity.ComponentActivity
@@ -68,13 +69,16 @@ fun CalcView() {
         val answer = rememberSaveable {
             mutableIntStateOf(0)
         }
+
+        val calculator = Calculator()
+
         when (operation.value) {
-            "+" -> answer.intValue = leftNumber.intValue + rightNumber.intValue
-            "-" -> answer.intValue = leftNumber.intValue - rightNumber.intValue
-            "*" -> answer.intValue = leftNumber.intValue * rightNumber.intValue
+            "+" -> answer.intValue = calculator.Add(leftNumber.intValue, rightNumber.intValue)
+            "-" -> answer.intValue = calculator.Subtract(leftNumber.intValue, rightNumber.intValue)
+            "*" -> answer.intValue = calculator.Multiply(leftNumber.intValue, rightNumber.intValue)
             "/" -> {
                 if (rightNumber.intValue != 0) {
-                    answer.intValue = leftNumber.intValue / rightNumber.intValue
+                    answer.intValue = calculator.Divide(leftNumber.intValue, rightNumber.intValue)
                 } else{
                     val context = LocalContext.current
                     Toast.makeText(context, "Cannot divide by zero", Toast.LENGTH_SHORT).show()
